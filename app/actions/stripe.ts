@@ -37,7 +37,10 @@ export const createCheckoutSession = async (cart: CartItemType[]): Promise<{ cli
             success_url: `${origin}/thank-you?session_id={CHECKOUT_SESSION_ID}`,
             cancel_url: `${origin}/cart?ref=checkout`,
             shipping_address_collection: {
-                allowed_countries: ['US', 'IN'],
+                allowed_countries: ['IN'],
+            },
+            phone_number_collection: {
+                enabled: true,
             },
         })
 
