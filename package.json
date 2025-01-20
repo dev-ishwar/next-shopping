@@ -10,6 +10,7 @@
     "email": "email dev"
   },
   "dependencies": {
+    "@heroicons/react": "^2.2.0",
     "@react-email/components": "0.0.32",
     "@stripe/react-stripe-js": "^3.1.1",
     "@stripe/stripe-js": "^5.5.0",

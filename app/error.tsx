@@ -12,7 +12,7 @@ const Errorpage = ({ error, reset }: PropsType) => {
                 <p>{error.message}</p>
                 <button
                     onClick={reset}
-                    className="border border-[currentColor] inline-block px-3 py-1 mt-5 hover:bg-[--darker-color] rounded-sm"
+                    className="border border-[currentColor] inline-block px-3 py-1 mt-5 hover:bg-[--button-hover] rounded-sm"
                 >Try Again</button>
             </div>
         </main>

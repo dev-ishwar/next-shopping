@@ -10,8 +10,8 @@ const Homepage = async () => {
                 {
                     HOMEPAGE_CARDS
                         .map(item => (
-                            <Card key={item.id} classes="hover:bg-[--darker-color] group min-h-[200px] min-w-[300px] grid place-content-center" >
-                                <Link href={item.href} className="cursor-pointer group-hover:text-[--accent-color] text-2xl">
+                            <Card key={item.id} classes="hover:bg-[--button-hover] group min-h-[200px] min-w-[300px] grid place-content-center" >
+                                <Link href={item.href} className="cursor-pointer group-hover:text-[--background] transition-colors duration-300 text-2xl">
                                     {item.title}
                                 </Link>
                             </Card>

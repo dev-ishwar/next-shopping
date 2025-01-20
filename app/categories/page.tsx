@@ -12,8 +12,8 @@ const Categories = async () => {
                 {
                     categories
                         .map(category => (
-                            <Card key={category.slug} classes="hover:bg-[--darker-color] group" >
-                                <Link href={`/categories/${category.slug}`} className="cursor-pointer group-hover:text-[--accent-color]">
+                            <Card key={category.slug} classes="hover:bg-[--button-hover] group" >
+                                <Link href={`/categories/${category.slug}`} className="cursor-pointer group-hover:text-[--background] transition-colors duration-300">
                                     {category.name}
                                 </Link>
                             </Card>

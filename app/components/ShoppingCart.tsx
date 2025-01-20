@@ -8,17 +8,35 @@ import emptyCartSvg from '@/app/assets/emptyCart.svg';
 import Link from "next/link";
 import { createCheckoutSession } from "../actions/stripe";
 import { useEffect, useState } from "react";
-import { useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { NAVIGATION_REF } from "../lib/config";
+import { createClient } from "../utils/supabase/client";
 
 const ShoppingCart = () => {
     const [disableButton, setDisableButton] = useState(false);
     const { cart, dispatch, REDUCER_ACTIONS, totalItems, totalPrice } = useCart();
     const searchParams = useSearchParams();
 
+    const router = useRouter();
+    const pathname = usePathname();
+
+    const checkAuthUser = async () => {
+        const supabase = createClient();
+        const { data: { user } } = await supabase.auth.getUser();
+        if (!user) {
+            router.push(`/login?from=${pathname}`);
+            return;
+        };
+        return user;
+    }
+
     const onSubmitOrder = async () => {
         setDisableButton(true);
-        const { url } = await createCheckoutSession(cart);
+
+        const user = await checkAuthUser();
+        if (!user) return;
+
+        const { url } = await createCheckoutSession(cart, user?.email);
         window.location.assign(url as string)
         setDisableButton(false);
         // dispatch({ type: REDUCER_ACTIONS.SUBMIT })

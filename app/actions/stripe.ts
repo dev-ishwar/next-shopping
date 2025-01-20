@@ -9,7 +9,7 @@ import { formatAmountForStripe } from "../lib/helper";
 import { stripe } from '../lib/stripe';
 import { CartItemType } from "../context/CartProvider";
 
-export const createCheckoutSession = async (cart: CartItemType[]): Promise<{ client_secret: string | null, url: string | null }> => {
+export const createCheckoutSession = async (cart: CartItemType[], customerEmail?: string): Promise<{ client_secret: string | null, url: string | null }> => {
     const ui_mode = STRIPE_UI_MODE as Stripe.Checkout.SessionCreateParams.UiMode;
     const origin = (await headers()).get('origin') as string;
 
@@ -42,6 +42,7 @@ export const createCheckoutSession = async (cart: CartItemType[]): Promise<{ cli
             phone_number_collection: {
                 enabled: true,
             },
+            customer_email: customerEmail
         })
 
     return {

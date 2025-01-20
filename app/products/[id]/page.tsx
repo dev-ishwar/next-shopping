@@ -35,7 +35,7 @@ const Product = async ({ params }: PropsType) => {
                         </Link>
                     </p>
                     <p>{currencyFormatter(product.price)}</p>
-                    <AddToCartButton product={product} classes="w-fit hover:bg-[--darker-color]" />
+                    <AddToCartButton product={product} classes="w-fit hover:bg-[--button-hover]" />
                 </div>
             </div>
             <div>

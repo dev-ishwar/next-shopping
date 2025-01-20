@@ -35,7 +35,7 @@ const ProductCard = ({ product }: PropsType) => {
                 </Link>
                 <div className="w-full mt-2">
                     <Suspense fallback={<ButtonSkeleton />}>
-                        <AddToCartButton product={product} classes="hover:bg-[--darker-color] transition-all w-full" />
+                        <AddToCartButton product={product} classes="hover:bg-[--button-hover] transition-all w-full" />
                     </Suspense>
                 </div>
             </article>

@@ -1,27 +1,31 @@
 import Image from "next/image";
 import Link from "next/link";
 import CartIcon from "./CartIcon";
+import LoginButton from "./LoginButton";
 
 const Header = () => {
     return (
-        <header className="flex justify-between px-5 py-3 mb-5 border-b-2 border-b-[--darker-color]">
+        <header className="flex justify-between items-center px-5 py-3 mb-5 border-b-2 border-b-[--darker-color] bg-[--darker-color] sticky top-0">
             <Link href={'/'} passHref>
                 <Image
                     src={"/dark.svg"}
                     width={90}
                     height={58}
                     alt="logo"
-                    className="hidden dark:block"
+                    className=" dark:invert"
                 />
-                <Image
+                {/* <Image
                     src={"/light.svg"}
                     width={90}
                     height={58}
                     alt="logo"
                     className="block dark:hidden"
-                />
+                /> */}
             </Link>
-            <CartIcon />
+            <div className="flex gap-2">
+                <LoginButton />
+                <CartIcon />
+            </div>
         </header>
     )
 }

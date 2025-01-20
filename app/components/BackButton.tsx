@@ -13,7 +13,7 @@ const BackButton = ({ text, classes }: PropsType) => {
     const handleBackClick = () => router.back();
 
     return (
-        <button onClick={handleBackClick} className={`border border-[--darker-color] p-2 hover:bg-[--darker-color] rounded-sm ${classes ?? ''}`}>
+        <button onClick={handleBackClick} className={`border border-[--darker-color] p-2 hover:bg-[--button-hover] rounded-sm ${classes ?? ''}`}>
             {text}
         </button>
     )

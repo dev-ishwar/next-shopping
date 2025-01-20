@@ -3,21 +3,23 @@
 @tailwind utilities;
 
 :root {
-  --darker-color: #1F4529;
-  --dark-color: #47663B;
-  --light-color: #E8ECD7;
-  --accent-color: #EED3B1;
+  --darker-color: #1F4E5F;
+  --dark-color: #79A8A9;
+  --light-color: #F4F7F7;
+  --accent-color: #AACFD0;
+  --button-hover: var(--accent-color);
 
   --background: var(--light-color);
-  --foreground: var(--dark-color);
+  --foreground: var(--darker-color);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --darker-color: #1F4529;
-    --dark-color: #47663B;
-    --light-color: #E8ECD7;
-    --accent-color: #EED3B1;
+    --darker-color: #1F4E5F;
+    --dark-color: #79A8A9;
+    --light-color: #F4F7F7;
+    --accent-color: #AACFD0;
+    --button-hover: var(--accent-color);
 
     --background: var(--dark-color);
     --foreground: var(--light-color);
