@@ -16,7 +16,7 @@ const LoginPage = () => {
                 btnText='Login'
                 footerLink={
                     <p className='text-center'>
-                        <span>Don't have account ?</span>
+                        <span>Don&apos;t have account ?</span>
                         <Link href={'/signup'} className='ml-2 underline'>Signup</Link>
                     </p>
                 }
