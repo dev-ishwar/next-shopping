@@ -3,9 +3,13 @@ import { useActionState } from 'react';
 import { login } from '../actions/login';
 import LoginSignupForm from '../components/auth/LoginSignup';
 import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
 
 const LoginPage = () => {
-    const [error, formAction, isPending] = useActionState(login, undefined);
+    const searchParams = useSearchParams();
+    const from = searchParams.get('from');
+    const bindLoginWithFrom = login.bind(null, from);
+    const [error, formAction, isPending] = useActionState(bindLoginWithFrom, undefined);
 
     return (
         <main className='grid place-content-center'>

@@ -5,9 +5,8 @@ import { createClient } from "@/app/utils/supabase/server";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { AuthError, type Provider } from '@supabase/supabase-js';
-import { headers } from "next/headers";
 
-export const login = async (_prevState: string | undefined, formData: FormData) => {
+export const login = async (from: string | null, _prevState: string | undefined, formData: FormData) => {
     const supabase = await createClient();
     // TODO: Add type checking and validation
     const data = {
@@ -22,10 +21,8 @@ export const login = async (_prevState: string | undefined, formData: FormData) 
         }
         return 'Something went wrong!'
     }
-    const header = await headers();
-    header.get('ir;')
     revalidatePath('/', 'layout');
-    redirect('/');
+    redirect(from ?? '/');
 }
 
 export const singup = async (_prevState: string | undefined, formData: FormData) => {
