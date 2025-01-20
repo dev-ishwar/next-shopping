@@ -62,7 +62,7 @@ export const logout = async () => {
 export const socialLogin = async (provider: Provider) => {
     const supabase = await createClient();
 
-    const { data, error } = await supabase.auth.signInWithOAuth({
+    const { data } = await supabase.auth.signInWithOAuth({
         provider,
         options: {
             redirectTo: 'http://localhost:3000/api/auth/callback',
