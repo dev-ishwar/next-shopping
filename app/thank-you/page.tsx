@@ -25,9 +25,6 @@ const ThankYouPage = async ({ searchParams }: PropsType) => {
                 <p>
                     Please check you email ({checkoutSession.customer_details?.email}) for shipping details.
                 </p>
-                <p>
-                    {JSON.stringify(checkoutSession, null, 2)}
-                </p>
                 <Link
                     className="border border-[currentColor] inline-block px-3 py-1 mt-5 hover:bg-[--darker-color] rounded-sm"
                     href={'/'}
