@@ -8,7 +8,7 @@ const Header = () => {
         <header className="flex justify-between items-center px-5 py-3 mb-5 border-b-2 border-b-[--darker-color] bg-[--darker-color] sticky top-0">
             <Link href={'/'} passHref>
                 <Image
-                    src={"/dark.svg"}
+                    src={"/logo.png"}
                     width={90}
                     height={58}
                     alt="logo"
