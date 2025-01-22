@@ -7,15 +7,13 @@ import CartItem from "./CartItem";
 import emptyCartSvg from '@/app/assets/emptyCart.svg';
 import Link from "next/link";
 import { createCheckoutSession } from "../actions/stripe";
-import { useEffect, useState } from "react";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { NAVIGATION_REF } from "../lib/config";
+import { useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
 import { createClient } from "../utils/supabase/client";
 
 const ShoppingCart = () => {
     const [disableButton, setDisableButton] = useState(false);
     const { cart, dispatch, REDUCER_ACTIONS, totalItems, totalPrice } = useCart();
-    const searchParams = useSearchParams();
 
     const router = useRouter();
     const pathname = usePathname();
@@ -42,8 +40,8 @@ const ShoppingCart = () => {
     }
 
     const content = (
-        <div className="flex gap-5 mt-7">
-            <div className="flex-grow flex gap-5 overflow-hidden p-5 justify-center flex-col border rounded-md">
+        <div className="flex flex-wrap gap-5 mt-7">
+            <div className="flex-1 flex gap-5 overflow-hidden p-5 justify-center flex-col border rounded-md">
                 {
                     cart.length
                         ?
@@ -70,7 +68,7 @@ const ShoppingCart = () => {
                         </p>
                 }
             </div>
-            <Card classes="max-h-fit flex-grow-2 basis-[250px]">
+            <Card classes="max-h-fit basis-[250px]">
                 <div className="">
                     <p>Total Items: {totalItems}</p>
                     <p>Total Price: {totalPrice}</p>
