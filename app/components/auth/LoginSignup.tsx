@@ -12,7 +12,7 @@ type PropsType = {
 
 const LoginSignupForm = ({ error, isPending, action, btnText, footerLink }: PropsType) => {
     return (
-        <Card classes="w-[300px]">
+        <Card classes="w-[300px] ">
             <form className="">
                 {error && <p className="text-red-900 font-semibold text-center mb-2">{error}</p>}
                 <div className="flex flex-col mb-3">
@@ -22,7 +22,7 @@ const LoginSignupForm = ({ error, isPending, action, btnText, footerLink }: Prop
                         id="email"
                         name="email"
                         required
-                        className="bg-transparent border placeholder:text-sm px-2 py-1 border-[currentColor] rounded-sm focus-within:outline-[--darkerColor]"
+                        className="bg-transparent border placeholder:text-sm placeholder:text-gray-500 px-2 py-1 border-[currentColor] rounded-sm focus-within:outline-[--darkerColor]"
                         placeholder="jane-doe@email.com"
                     />
                 </div>

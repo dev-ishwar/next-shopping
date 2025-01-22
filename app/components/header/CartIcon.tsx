@@ -12,7 +12,7 @@ const CartIcon = () => {
             >
                 {totalItems}
             </span>
-            <Link className="bg-opacity-0 border border-[--accent-color] px-2 py-1 rounded-sm hover:bg-[--button-hover]" href={`/cart`}>
+            <Link className="bg-opacity-0 text-[--light-color] border border-[--accent-color] px-2 py-1 rounded-sm hover:bg-[--button-hover]" href={`/cart`}>
                 Cart
             </Link>
         </div>

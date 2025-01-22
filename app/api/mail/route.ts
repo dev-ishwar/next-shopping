@@ -17,7 +17,7 @@ export const POST = async (req: Request) => {
         })
 
         if (error) {
-            return Response.json({ error }, { status: 500 })
+            return Response.json({ error }, { status: 500 });
         }
 
         return Response.json(data);

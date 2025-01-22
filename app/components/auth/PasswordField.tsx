@@ -13,7 +13,7 @@ const PasswordField = () => {
                 id="password"
                 name="password"
                 required
-                className="bg-transparent border border-[currentColor] rounded-sm placeholder:text-sm px-2 py-1 focus-within:outline-[--darkerColor] w-full"
+                className="bg-transparent border border-[currentColor] rounded-sm placeholder:text-sm placeholder:text-gray-500 px-2 py-1 focus-within:outline-[--darkerColor] w-full"
                 placeholder="*******"
             />
             <div className="absolute top-2 right-1">

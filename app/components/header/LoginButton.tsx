@@ -35,10 +35,10 @@ const LoginButton = async () => {
     const content = user ?
         <div className="flex items-center gap-2">
             <CurrentUserDetails user={user} />
-            <Button onClick={logout}>Logout</Button>
+            <Button onClick={logout} className="border border-[--light-color] text-[--light-color]">Logout</Button>
         </div>
-        : <Button>
-            <Link href={'/login'}>Login</Link>
+        : <Button className="border border-[--light-color] text-[--light-color]">
+            <Link href={'/login'} className="text-[--light-color]">Login</Link>
         </Button>
 
     return content;

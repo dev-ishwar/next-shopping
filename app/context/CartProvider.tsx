@@ -42,13 +42,18 @@ const reducer = (state: CartStateType, action: ReducerAction): CartStateType => 
             const itemExists: CartItemType | undefined = state.cart.find(item => item.id === id);
 
             const qty = itemExists ? itemExists.qty + 1 : 1;
-            return { ...state, cart: [...filteredItems, { ...action.payload, qty }] };
+            const updatedCart = [...filteredItems, { ...action.payload, qty }];
+
+            saveCartInStorage(state.cart)
+            return { ...state, cart: updatedCart };
         }
         case REDUCER_ACTION_TYPE.REMOVE: {
             if (!action.payload) throw new Error('Missing payload in REMOVE action');
 
             const { id } = action.payload;
             const filteredItems: CartItemType[] = state.cart.filter(item => item.id !== id);
+
+            saveCartInStorage(filteredItems)
             return { ...state, cart: [...filteredItems] }
         }
         case REDUCER_ACTION_TYPE.QUANTITY: {
@@ -61,15 +66,18 @@ const reducer = (state: CartStateType, action: ReducerAction): CartStateType => 
             const updatedItem: CartItemType = { ...itemExists, qty }
 
             const filteredItems: CartItemType[] = state.cart.filter(item => item.id !== id);
+
+            saveCartInStorage([...filteredItems, updatedItem]);
             return { ...state, cart: [...filteredItems, updatedItem] }
         }
         case REDUCER_ACTION_TYPE.SUBMIT: {
-
+            saveCartInStorage([]);
             return { ...state, cart: [] }
         }
         case REDUCER_ACTION_TYPE.HYDRATE: {
             const stored = getCartFromStorage();
-            return { ...state, cart: stored }
+            const hydrated = state.cart.length ? state.cart : stored;
+            return { ...state, cart: hydrated }
         }
         default: {
             throw new Error('Unindentified reducer action type.')
@@ -83,6 +91,8 @@ const useCartContext = () => {
 
     useEffect(() => {
         _mounted.current = true;
+        // Hydrate the cart state from local storage
+        dispatch({ type: REDUCER_ACTIONS.HYDRATE });
         return () => { _mounted.current = false };
     }, [])
 
@@ -92,7 +102,7 @@ const useCartContext = () => {
     const priceTotal = state.cart.reduce((prevValue, cartItem) => prevValue + cartItem.qty * cartItem.price, 0);
     const totalPrice = currencyFormatter(priceTotal);
 
-    if(_mounted.current) saveCartInStorage(state.cart);
+    if (_mounted.current) saveCartInStorage(state.cart);
 
     return { cart: state.cart, REDUCER_ACTIONS, totalItems, totalPrice, dispatch }
 }

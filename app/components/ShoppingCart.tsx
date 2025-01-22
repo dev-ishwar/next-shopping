@@ -39,13 +39,7 @@ const ShoppingCart = () => {
         const { url } = await createCheckoutSession(cart, user?.email);
         window.location.assign(url as string)
         setDisableButton(false);
-        // dispatch({ type: REDUCER_ACTIONS.SUBMIT })
     }
-
-    useEffect(() => {
-        const ref = searchParams.get('ref');
-        if (ref === NAVIGATION_REF.CHECKOUT) dispatch({ type: REDUCER_ACTIONS.HYDRATE });
-    }, [])
 
     const content = (
         <div className="flex gap-5 mt-7">
