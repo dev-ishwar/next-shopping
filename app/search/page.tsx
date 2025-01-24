@@ -11,9 +11,8 @@ import { useSearchParams } from "next/navigation";
 const Search = () => {
     const [products, setProducts] = useState<ProductType[]>([]);
     const [loading, setLoading] = useState(false);
-    const searchParams = useSearchParams();
+    const [query, setQuery] = useState('');
 
-    const query = searchParams.get('query') ?? "";
     const fetchProducts = async () => {
         if (!query) {
             setProducts([]);
@@ -42,9 +41,9 @@ const Search = () => {
     }, [query])
 
     return (
-        <Card classes="max-w-[600px] w-[90%] mx-auto">
+        <Card classes="border-0 max-w-[600px] w-[90%] mx-auto">
             <div>
-                <SearchInput query={query} />
+                <SearchInput setQuery={setQuery} />
                 <SearchResults products={products} />
                 {
                     loading && <p className="text-center my-5">Loading...</p>

@@ -20,7 +20,7 @@ const SearchResults = ({ products }: PropsType) => {
 
                 products.map(product => (
                     <li key={product.id} className="my-2 p-1 shadow-sm hover:shadow-md hover:shadow-[--darker-color] transition-all first:mt-5">
-                        <Link href={`/products/${product.id}`} className="w-full flex gap-2">
+                        <Link href={`/products/${product.id}`} replace className="w-full flex gap-2">
                             {
                                 product.thumbnail &&
                                 <Image src={product.thumbnail} width={30} height={30} alt="product img" />

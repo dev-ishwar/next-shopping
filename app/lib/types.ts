@@ -1,3 +1,5 @@
+import React from "react"
+
 export interface ProductType {
     id: number
     title: string
@@ -44,4 +46,8 @@ export interface MetaType {
     updatedAt: string
     barcode: string
     qrCode: string
+}
+
+export interface IChildren {
+    children: React.ReactNode
 }
