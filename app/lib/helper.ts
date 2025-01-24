@@ -36,7 +36,16 @@ export const formatShippingAddress = (address: Stripe.Address | null | undefined
 
 // Convert stripe amount - cents to dollors 
 export const convertCentsToDollor = (amount: number | null) => {
-    if(!amount) return null;
+    if (!amount) return null;
     const formatter = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' })
     return formatter.format(amount / 100);
+}
+
+export const debounce = <T extends (...args: any []) => void>(cb: T, delay: number = 500): (...args: Parameters<T>) => void => {
+    let timeout: NodeJS.Timeout;
+
+    return (...args: Parameters<T>) => {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => cb(...args), delay)
+    }
 }

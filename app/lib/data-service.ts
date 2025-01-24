@@ -52,3 +52,14 @@ export const fetchProductById = async (id: string) => {
         return null;
     }
 }
+
+export const searchProducts = async (query: string) => {
+    try {
+        const res = await fetch(`${API_BASE_URL}/products/search?${query}`);
+        const data: { products: ProductType[] } = await res.json();
+        return data.products;
+    } catch (error) {
+        console.error('error: ', error);
+        return [];
+    }
+}
