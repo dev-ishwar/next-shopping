@@ -6,7 +6,6 @@ import { searchProducts } from "../lib/data-service";
 import { ProductType } from "../lib/types";
 import SearchResults from "../components/SearchResults";
 import Card from "../components/Card";
-import { useSearchParams } from "next/navigation";
 
 const Search = () => {
     const [products, setProducts] = useState<ProductType[]>([]);
