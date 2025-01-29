@@ -41,6 +41,7 @@ export const convertCentsToDollor = (amount: number | null) => {
     return formatter.format(amount / 100);
 }
 
+/* eslint-disable  @typescript-eslint/no-explicit-any */
 export const debounce = <T extends (...args: any []) => void>(cb: T, delay: number = 500): (...args: Parameters<T>) => void => {
     let timeout: NodeJS.Timeout;
 
